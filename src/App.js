@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <Navbar />
       <header className="header">
-        <h1>Welcome to Tribal Trends</h1>
+        <h1>Welcome to Tribal Trends website</h1>
         <p>Discover amazing products and great deals</p>
         <a href="/products" className="shop-now-btn">Shop Now</a>
       </header>
