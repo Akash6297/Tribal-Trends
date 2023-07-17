@@ -17,10 +17,6 @@ mongoose.connect('mongodb+srv://akashmandal6297:S35Px04goYpsvTJs@cluster0.xwdlcd
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-// Handle requests that are not for the API
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build/index.html'));
-});
 
 // API routes
 app.get('/api/users', (req, res) => {
@@ -32,6 +28,7 @@ app.get('/api/users', (req, res) => {
     }
   });
 });
+
 
 app.get('/api/products', (req, res) => {
   Product.find({}, (err, products) => {
@@ -67,6 +64,10 @@ app.post('/api/products', (req, res) => {
   });
 });
 
+// Catch-all route to serve the React app's index.html file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
